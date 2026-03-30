@@ -33,7 +33,8 @@ export default function Nav() {
       <nav className="site-nav" style={wrap}>
         <a
           href="#"
-          style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.18em", color: c.textSub, textDecoration: "none", transition: "color 0.15s" }}
+          className="nav-brand"
+          style={{ fontFamily: c.mono, fontSize: "clamp(9px, 2.4vw, 10px)", letterSpacing: "0.18em", color: c.textSub, textDecoration: "none", transition: "color 0.15s" }}
           onMouseEnter={e => (e.currentTarget.style.color = c.text)}
           onMouseLeave={e => (e.currentTarget.style.color = c.textSub)}
         >
@@ -42,9 +43,10 @@ export default function Nav() {
         <div className="nav-links">
           {sections.map((id, i) => (
             <a key={id} href={`#${id}`}
+              className="nav-link"
               style={{
                 fontFamily: c.mono,
-                fontSize: "10px",
+                fontSize: "clamp(8px, 2.3vw, 10px)",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: active === id ? c.violet : c.textDim,
@@ -54,7 +56,7 @@ export default function Nav() {
               onMouseEnter={e => { if (active !== id) e.currentTarget.style.color = c.textSub; }}
               onMouseLeave={e => { if (active !== id) e.currentTarget.style.color = c.textDim; }}
             >
-              <span style={{ opacity: 0.45, marginRight: "5px", fontSize: "9px" }}>0{i + 1}</span>
+              <span className="nav-link-index" style={{ opacity: 0.45, marginRight: "4px", fontSize: "clamp(7px, 2vw, 9px)" }}>0{i + 1}</span>
               {id}
             </a>
           ))}
