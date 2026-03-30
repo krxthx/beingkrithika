@@ -1,0 +1,66 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { wrap, c } from "@/lib/layout";
+
+const sections = ["about", "projects", "contact"];
+
+export default function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+      for (const id of [...sections].reverse()) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) { setActive(id); return; }
+      }
+      setActive("");
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header style={{
+      position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+      height: "60px",
+      background: scrolled ? "rgba(7,6,15,0.85)" : "transparent",
+      backdropFilter: scrolled ? "blur(24px)" : "none",
+      borderBottom: `1px solid ${scrolled ? "rgba(255,255,255,0.07)" : "transparent"}`,
+      transition: "background 0.3s, border-color 0.3s",
+    }}>
+      <nav style={{ ...wrap, height: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <a
+          href="#"
+          style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.18em", color: c.textSub, textDecoration: "none", transition: "color 0.15s" }}
+          onMouseEnter={e => (e.currentTarget.style.color = c.text)}
+          onMouseLeave={e => (e.currentTarget.style.color = c.textSub)}
+        >
+          krxthx
+        </a>
+        <div style={{ display: "flex", gap: "32px", alignItems: "center" }}>
+          {sections.map((id, i) => (
+            <a key={id} href={`#${id}`}
+              style={{
+                fontFamily: c.mono,
+                fontSize: "10px",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: active === id ? c.violet : c.textDim,
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+              onMouseEnter={e => { if (active !== id) e.currentTarget.style.color = c.textSub; }}
+              onMouseLeave={e => { if (active !== id) e.currentTarget.style.color = c.textDim; }}
+            >
+              <span style={{ opacity: 0.45, marginRight: "5px", fontSize: "9px" }}>0{i + 1}</span>
+              {id}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
+  );
+}
