@@ -3,7 +3,7 @@ import type React from "react";
 export const wrap: React.CSSProperties = {
   maxWidth: "960px",
   margin: "0 auto",
-  padding: "0 40px",
+  padding: "0 clamp(20px, 5vw, 40px)",
 };
 
 // Design tokens

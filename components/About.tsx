@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { wrap, c } from "@/lib/layout";
+import { c } from "@/lib/layout";
 
 const stackItems = ["TypeScript", "Python", "Kotlin", "Next.js", "React", "Electron", "LangChain", "LiteLLM", "MCP", "AWS", "Azure", "Terraform"];
 
@@ -16,12 +16,12 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" ref={ref} style={{ padding: "120px 0", borderTop: `1px solid ${c.border}`, position: "relative", zIndex: 2 }}>
-      <div style={wrap}>
+    <section id="about" ref={ref} className="section-block" style={{ borderTop: `1px solid ${c.border}` }}>
+      <div className="page-wrap">
         <p className="section-label">01 / About</p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: "80px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div className="about-grid">
+          <div className="about-main" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <p style={{ fontSize: "1.08rem", fontWeight: 500, lineHeight: 1.85, color: c.text }}>
               I&apos;m a software engineer at Presidio working on Generative AI
               systems and frontend platforms -  building agentic frameworks,
@@ -73,7 +73,7 @@ export default function About() {
             </div>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+          <div className="about-side" style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             <div>
               <p style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", color: c.textDim, marginBottom: "12px" }}>
                 Currently

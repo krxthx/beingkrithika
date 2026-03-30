@@ -23,15 +23,14 @@ export default function Nav() {
   }, []);
 
   return (
-    <header style={{
+    <header className="site-header" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-      height: "60px",
       background: scrolled ? "rgba(7,6,15,0.85)" : "transparent",
       backdropFilter: scrolled ? "blur(24px)" : "none",
       borderBottom: `1px solid ${scrolled ? "rgba(255,255,255,0.07)" : "transparent"}`,
       transition: "background 0.3s, border-color 0.3s",
     }}>
-      <nav style={{ ...wrap, height: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <nav className="site-nav" style={wrap}>
         <a
           href="#"
           style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.18em", color: c.textSub, textDecoration: "none", transition: "color 0.15s" }}
@@ -40,7 +39,7 @@ export default function Nav() {
         >
           krxthx
         </a>
-        <div style={{ display: "flex", gap: "32px", alignItems: "center" }}>
+        <div className="nav-links">
           {sections.map((id, i) => (
             <a key={id} href={`#${id}`}
               style={{

@@ -9,21 +9,15 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
   return (
     <article
-      className="glass-card"
+      className="glass-card project-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        padding: "28px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-      }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <div className="project-card-header">
         <span style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.08em", color: c.textDim }}>
           0{index + 1}
         </span>
-        <div style={{ display: "flex", gap: "14px" }}>
+        <div className="project-links">
           {project.links.github && (
             <a href={project.links.github} target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.08em", color: hovered ? c.violet : c.textDim, textDecoration: "none", transition: "color 0.2s" }}>

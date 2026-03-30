@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { wrap, c } from "@/lib/layout";
+import { c } from "@/lib/layout";
 import { projects } from "@/lib/projects";
 import ProjectCard from "./ProjectCard";
 
@@ -16,10 +16,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" ref={ref} style={{ padding: "80px 0 120px", borderTop: `1px solid ${c.border}`, position: "relative", zIndex: 2 }}>
-      <div style={wrap}>
+    <section id="projects" ref={ref} className="section-block compact" style={{ borderTop: `1px solid ${c.border}` }}>
+      <div className="page-wrap">
         <p className="section-label">02 / Projects</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "16px" }}>
+        <div className="projects-grid">
           {projects.map((project, i) => (
             <ProjectCard key={project.name} project={project} index={i} />
           ))}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { wrap, c } from "@/lib/layout";
+import { c } from "@/lib/layout";
 
 const links = [
   { label: "email", value: "krithikanithyanandam7@gmail.com", href: "mailto:krithikanithyanandam7@gmail.com", accent: c.pink },
@@ -21,13 +21,13 @@ export default function Contact() {
   }, []);
 
   return (
-    <section id="contact" ref={ref} style={{ padding: "80px 0 120px", borderTop: `1px solid ${c.border}`, position: "relative", zIndex: 2 }}>
-      <div style={wrap}>
+    <section id="contact" ref={ref} className="section-block compact" style={{ borderTop: `1px solid ${c.border}` }}>
+      <div className="page-wrap">
         <p className="section-label">03 / Contact</p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
-          <div>
-            <h2 style={{ fontSize: "2.8rem", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.0, color: c.text, marginBottom: "18px" }}>
+        <div className="contact-grid">
+          <div className="contact-copy">
+            <h2 style={{ fontSize: "clamp(2.2rem, 10vw, 2.8rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.0, color: c.text, marginBottom: "18px" }}>
               say hello.
             </h2>
             <p style={{ fontSize: "0.93rem", lineHeight: 1.9, color: c.textSub }}>
@@ -37,20 +37,19 @@ export default function Contact() {
             </p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div className="contact-list">
             {links.map(l => (
               <a
                 key={l.label}
                 href={l.href}
                 target={l.href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="glass-card"
-                style={{ display: "flex", alignItems: "center", gap: "18px", padding: "14px 18px", textDecoration: "none" }}
+                className="glass-card contact-link"
               >
                 <span style={{ fontFamily: c.mono, fontSize: "9px", letterSpacing: "0.14em", textTransform: "uppercase", color: c.textDim, width: "52px", flexShrink: 0 }}>
                   {l.label}
                 </span>
-                <span style={{ fontSize: "0.85rem", color: c.textSub, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", transition: "color 0.2s" }}
+                <span className="contact-link-value" style={{ fontSize: "0.85rem", color: c.textSub, transition: "color 0.2s" }}
                   onMouseEnter={e => (e.currentTarget.style.color = l.accent)}
                   onMouseLeave={e => (e.currentTarget.style.color = c.textSub)}
                 >

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { wrap, c } from "@/lib/layout";
+import { c } from "@/lib/layout";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -39,16 +39,9 @@ export default function Hero() {
   return (
     <>
       <div id="cursor-glow" />
-      <section style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        position: "relative",
-        zIndex: 2,
-      }}>
-        <div style={wrap}>
-          <div ref={ref} style={{ opacity: 0 }}>
+      <section className="hero-section">
+        <div className="page-wrap">
+          <div ref={ref} className="hero-copy" style={{ opacity: 0 }}>
 
             <div className="hero-line" style={{ marginBottom: "32px" }}>
               <span style={{
@@ -78,7 +71,7 @@ export default function Hero() {
               fontWeight: 700,
               letterSpacing: "-0.04em",
               lineHeight: 1.0,
-              marginBottom: "32px",
+              marginBottom: "clamp(24px, 4vw, 32px)",
             }}>
               <span className="gradient-name">Krithika<br />Nithyanandam</span>
             </h1>
@@ -88,14 +81,15 @@ export default function Hero() {
               lineHeight: 1.85,
               color: c.textSub,
               maxWidth: "44ch",
-              marginBottom: "52px",
+              width: "min(100%, 44ch)",
+              marginBottom: "clamp(32px, 7vw, 52px)",
             }}>
               Software engineer specialising in Generative AI
               systems and frontend platforms. Building things
               at Presidio. M.Tech AI &amp; ML at BITS Pilani.
             </p>
 
-            <div className="hero-line" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            <div className="hero-line hero-actions">
               <a
                 href="#about"
                 style={{

@@ -1,10 +1,24 @@
 @import "tailwindcss";
 
+:root {
+  --section-space: 120px;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  max-width: 100%;
+}
 
 body {
+  min-width: 320px;
   background-color: #07060f;
   background-image:
     radial-gradient(ellipse 78% 58% at 12% 0%, rgba(109,40,217,0.18) 0%, transparent 58%),
@@ -16,9 +30,16 @@ body {
   color: #f8f8ff;
   font-family: var(--font-jakarta), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection { background: rgba(139, 92, 246, 0.32); }
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: #07060f; }
@@ -105,7 +126,7 @@ body {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #4a4870;
-  margin-bottom: 56px;
+  margin-bottom: clamp(36px, 6vw, 56px);
   display: flex;
   align-items: center;
   gap: 14px;
@@ -116,4 +137,223 @@ body {
   height: 1px;
   width: 48px;
   background: linear-gradient(90deg, #2d2b45, transparent);
+}
+
+.page-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}
+
+.section-block {
+  padding: var(--section-space) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.section-block.compact {
+  padding-top: 80px;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.site-nav {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(14px, 3vw, 20px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 32px);
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.hero-section {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  padding: 96px 0 48px;
+}
+
+.hero-copy {
+  max-width: 44rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.about-grid,
+.contact-grid {
+  display: grid;
+  gap: clamp(32px, 7vw, 80px);
+}
+
+.about-grid {
+  grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
+}
+
+.about-main,
+.about-side,
+.contact-copy,
+.contact-list {
+  min-width: 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.project-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.project-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.contact-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 14px 18px;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.contact-link-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --section-space: 96px;
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-space: 72px;
+  }
+
+  html {
+    scroll-padding-top: 112px;
+  }
+
+  body {
+    background-attachment: scroll, scroll, scroll, scroll, scroll;
+  }
+
+  .section-label {
+    margin-bottom: 36px;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    width: 32px;
+  }
+
+  .site-nav {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 136px;
+    padding-bottom: 40px;
+  }
+
+  .project-card,
+  .contact-link {
+    padding: 20px;
+  }
+
+  .project-card-header,
+  .contact-link {
+    flex-wrap: wrap;
+  }
+
+  .project-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .contact-link-value {
+    white-space: normal;
+  }
+
+  .footer-inner {
+    flex-wrap: wrap;
+  }
 }
