@@ -24,12 +24,12 @@ export default function About() {
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <p style={{ fontSize: "1.08rem", fontWeight: 500, lineHeight: 1.85, color: c.text }}>
               I&apos;m a software engineer at Presidio working on Generative AI
-              systems and frontend platforms — building agentic frameworks,
+              systems and frontend platforms -  building agentic frameworks,
               LLM tooling, and the developer experience around them.
             </p>
             <p style={{ fontSize: "0.93rem", lineHeight: 1.9, color: c.textSub }}>
               Doing an M.Tech in AI &amp; ML at BITS Pilani. I like understanding
-              how things work at the seam between systems and intelligence —
+              how things work at the seam between systems and intelligence - 
               and then writing about it.
             </p>
             <p style={{ fontSize: "0.93rem", lineHeight: 1.9, color: c.textSub }}>

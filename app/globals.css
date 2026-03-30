@@ -7,11 +7,12 @@ html { scroll-behavior: smooth; scroll-padding-top: 64px; }
 body {
   background-color: #07060f;
   background-image:
-    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(109,40,217,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 85% 100%, rgba(20,184,166,0.06) 0%, transparent 60%),
-    radial-gradient(circle, rgba(255,255,255,0.028) 1px, transparent 1px);
-  background-size: auto, auto, 28px 28px;
-  background-attachment: fixed, fixed, fixed;
+    radial-gradient(ellipse 78% 58% at 12% 0%, rgba(109,40,217,0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 42% 30% at 86% 16%, rgba(244,114,182,0.10) 0%, transparent 62%),
+    radial-gradient(ellipse 52% 40% at 82% 100%, rgba(20,184,166,0.08) 0%, transparent 60%),
+    linear-gradient(140deg, rgba(255,255,255,0.035) 0%, transparent 24%, transparent 58%, rgba(255,255,255,0.02) 74%, transparent 100%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.022) 0 1px, transparent 1px 28px);
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
   color: #f8f8ff;
   font-family: var(--font-jakarta), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,7 +32,7 @@ body {
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(139,92,246,0.09) 0%, rgba(52,211,153,0.035) 34%, transparent 62%);
   transform: translate(-50%, -50%);
   top: 50vh;
   left: 50vw;
