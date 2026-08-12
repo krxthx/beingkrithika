@@ -224,7 +224,7 @@ svg {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(12px, 2vw, 16px);
 }
 
@@ -237,10 +237,21 @@ svg {
 }
 
 .project-card-header {
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: flex-start;
   gap: 12px;
+}
+
+.project-card-body {
+  justify-self: start;
+  text-align: left;
+}
+
+.project-card-body,
+.project-description {
+  max-width: 68ch;
 }
 
 .project-links {
@@ -248,6 +259,17 @@ svg {
   gap: 14px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  justify-self: end;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .contact-grid {
@@ -263,7 +285,7 @@ svg {
 
 .contact-link {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 18px;
   padding: 14px 18px;
   text-decoration: none;
@@ -272,6 +294,25 @@ svg {
 
 .contact-link-value {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-link-icon {
+  width: 24px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-link-value > svg {
+  flex-shrink: 0;
+}
+
+.contact-link-text {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -282,9 +323,10 @@ svg {
 
 .footer-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 12px;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -345,21 +387,8 @@ svg {
     padding: 20px;
   }
 
-  .project-card-header,
-  .contact-link {
-    flex-wrap: wrap;
-  }
-
-  .project-links {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .contact-link-value {
+  .contact-link-text {
     white-space: normal;
   }
 
-  .footer-inner {
-    flex-wrap: wrap;
-  }
 }

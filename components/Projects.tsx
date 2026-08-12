@@ -20,8 +20,8 @@ export default function Projects() {
       <div className="page-wrap">
         <p className="section-label">02 / Projects</p>
         <div className="projects-grid">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} />
+          {projects.map(project => (
+            <ProjectCard key={project.name} project={project} />
           ))}
         </div>
       </div>

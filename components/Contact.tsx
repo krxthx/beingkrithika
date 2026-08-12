@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ExternalLink } from "lucide-react";
+import { FaDev, FaGithub, FaLinkedinIn, FaMedium } from "react-icons/fa6";
 import { c } from "@/lib/layout";
 
 const links = [
-  { label: "email", value: "krithikanithyanandam7@gmail.com", href: "mailto:krithikanithyanandam7@gmail.com", accent: c.pink },
-  { label: "github", value: "krxthx", href: "https://github.com/krxthx", accent: c.violet },
-  { label: "linkedin", value: "krithikanithyanandam", href: "https://www.linkedin.com/in/krithikanithyanandam", accent: c.teal },
-  { label: "medium", value: "@krithikanithyanandam", href: "https://medium.com/@krithikanithyanandam", accent: c.violet },
+  { label: "GitHub", icon: FaGithub, value: "krxthx", href: "https://github.com/krxthx", accent: c.violet },
+  { label: "LinkedIn", icon: FaLinkedinIn, value: "krithikanithyanandam", href: "https://www.linkedin.com/in/krithikanithyanandam", accent: c.teal },
+  { label: "Medium", icon: FaMedium, value: "@krithikanithyanandam", href: "https://medium.com/@krithikanithyanandam", accent: c.violet },
+  { label: "DEV", icon: FaDev, value: "@thatcaffeinateddev", href: "https://dev.to/thatcaffeinateddev", accent: c.pink },
 ];
 
 export default function Contact() {
@@ -38,25 +40,31 @@ export default function Contact() {
           </div>
 
           <div className="contact-list">
-            {links.map(l => (
-              <a
-                key={l.label}
-                href={l.href}
-                target={l.href.startsWith("mailto") ? undefined : "_blank"}
-                rel="noopener noreferrer"
-                className="glass-card contact-link"
-              >
-                <span style={{ fontFamily: c.mono, fontSize: "9px", letterSpacing: "0.14em", textTransform: "uppercase", color: c.textDim, width: "52px", flexShrink: 0 }}>
-                  {l.label}
-                </span>
-                <span className="contact-link-value" style={{ fontSize: "0.85rem", color: c.textSub, transition: "color 0.2s" }}
-                  onMouseEnter={e => (e.currentTarget.style.color = l.accent)}
-                  onMouseLeave={e => (e.currentTarget.style.color = c.textSub)}
+            {links.map(l => {
+              const Icon = l.icon;
+
+              return (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${l.label} profile`}
+                  className="glass-card contact-link"
                 >
-                  {l.value} ↗
-                </span>
-              </a>
-            ))}
+                  <span className="contact-link-icon" style={{ color: c.textDim }}>
+                    <Icon size={18} aria-hidden="true" />
+                  </span>
+                  <span className="contact-link-value" style={{ fontSize: "0.85rem", color: c.textSub, transition: "color 0.2s" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = l.accent)}
+                    onMouseLeave={e => (e.currentTarget.style.color = c.textSub)}
+                  >
+                    <span className="contact-link-text">{l.value}</span>
+                    <ExternalLink size={14} strokeWidth={1.7} aria-hidden="true" />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

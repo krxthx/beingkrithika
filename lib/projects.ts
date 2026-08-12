@@ -40,4 +40,14 @@ export const projects: Project[] = [
       live: "https://lorewave.me",
     },
   },
+  {
+    name: "Dosa Therapy",
+    tagline: "Crispy outside. Warm inside.",
+    description:
+      "A playful single-page ode to one very good crepe: 2,000 years of history, the chutney trio, eight regional varieties, and a mood-based dosa prescription. Every mascot and illustration is drawn by hand in SVG.",
+    tags: ["React", "TypeScript", "Vite", "hand-drawn SVG"],
+    links: {
+      github: "https://github.com/krxthx/dosa-therapy",
+    },
+  },
 ];

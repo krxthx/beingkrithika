@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 import { c } from "@/lib/layout";
 import { Project } from "@/lib/projects";
 
-export default function ProjectCard({ project, index }: { project: Project; index: number }) {
+export default function ProjectCard({ project }: { project: Project }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -14,42 +16,40 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       onMouseLeave={() => setHovered(false)}
     >
       <div className="project-card-header">
-        <span style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.08em", color: c.textDim }}>
-          0{index + 1}
-        </span>
+        <div className="project-card-body">
+          <h3 style={{
+            fontSize: "1.2rem",
+            fontWeight: 600,
+            letterSpacing: "-0.02em",
+            color: hovered ? c.violet : c.text,
+            transition: "color 0.2s",
+            marginBottom: "5px",
+          }}>
+            {project.name}
+          </h3>
+          <p style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.06em", color: c.textDim }}>
+            {project.tagline}
+          </p>
+        </div>
         <div className="project-links">
           {project.links.github && (
-            <a href={project.links.github} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.08em", color: hovered ? c.violet : c.textDim, textDecoration: "none", transition: "color 0.2s" }}>
-              github ↗
+            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="project-link"
+              aria-label={`View ${project.name} on GitHub`} title="View on GitHub"
+              style={{ color: hovered ? c.violet : c.textDim }}>
+              <FaGithub size={16} aria-hidden="true" />
             </a>
           )}
           {project.links.live && (
-            <a href={project.links.live} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.08em", color: hovered ? c.teal : c.textDim, textDecoration: "none", transition: "color 0.2s" }}>
-              visit ↗
+            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="project-link"
+              aria-label={`Visit ${project.name}`} title="Visit project"
+              style={{ color: hovered ? c.teal : c.textDim }}>
+              <ExternalLink size={16} strokeWidth={1.7} aria-hidden="true" />
             </a>
           )}
         </div>
       </div>
 
-      <div>
-        <h3 style={{
-          fontSize: "1.2rem",
-          fontWeight: 600,
-          letterSpacing: "-0.02em",
-          color: hovered ? c.violet : c.text,
-          transition: "color 0.2s",
-          marginBottom: "5px",
-        }}>
-          {project.name}
-        </h3>
-        <p style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.06em", color: c.textDim }}>
-          {project.tagline}
-        </p>
-      </div>
-
-      <p style={{ fontSize: "0.875rem", lineHeight: 1.8, color: c.textSub, flexGrow: 1 }}>
+      <p className="project-description" style={{ fontSize: "0.875rem", lineHeight: 1.8, color: c.textSub }}>
         {project.description}
       </p>
 

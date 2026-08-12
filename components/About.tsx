@@ -100,7 +100,12 @@ export default function About() {
               <p style={{ fontFamily: c.mono, fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", color: c.textDim, marginBottom: "12px" }}>
                 Certifications
               </p>
-              {["Terraform Associate", "Azure AI-102", "GCP Cloud Digital Leader"].map(item => (
+              {[
+                "HashiCorp Certified: Terraform Associate",
+                "Microsoft Certified: Azure AI Engineer Associate (AI-102)",
+                "Google Cloud Certified: Cloud Digital Leader",
+                "NVIDIA-Certified Associate: AI Infrastructure and Operations (NCA-AIIO)",
+              ].map(item => (
                 <p key={item} style={{ fontSize: "0.85rem", color: c.textSub, lineHeight: 1.75, marginBottom: "3px" }}>
                   {item}
                 </p>
